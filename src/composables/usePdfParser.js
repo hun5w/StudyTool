@@ -1,12 +1,10 @@
 import * as pdfjsLib from 'pdfjs-dist'
+import pdfjsWorkerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
 import { uid, deepClone } from '../utils/helpers.js'
 import { addIds } from '../utils/mindmapHelper.js'
 import { MINDMAP_TEMPLATES, TOPIC_DETECTORS } from '../data/templates.js'
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.mjs',
-  import.meta.url
-).href
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorkerUrl
 
 export function usePdfParser() {
   const loading = ref(false)
